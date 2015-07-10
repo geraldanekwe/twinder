@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="sif">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sif</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+  </head>
+  <body>
+    <nav ng-controller="NavCtrl" class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button data-toggle="collapse" data-target="#navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a ui-sref="home" class="navbar-brand">#Cloud {{currentUser.displayName}}</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a ui-sref="home"><i class="glyphicon glyphicon-home">&nbsp;Home</i></a></li>
+            <li><a ng-click="login()" ng-hide="currentUser"><i class="glyphicon glyphicon-home">&nbsp;Login</i></a><a ng-click="logout()" ng-show="currentUser"><i class="glyphicon glyphicon-home">&nbsp;Logout</i></a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div ui-view></div>
+        </div>
+      </div>
+    </div>
+    <script src="./packages/jquery/dist/jquery.min.js"></script>
+    <script src="./packages/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./packages/lodash/lodash.min.js"></script>
+    <script src="./packages/firebase/firebase.js"></script>
+    <script src="./packages/angular/angular.min.js"></script>
+    <script src="./packages/angularfire/dist/angularfire.min.js"></script>
+    <script src="./packages/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="./index.js"></script>
+  </body>
+</html>

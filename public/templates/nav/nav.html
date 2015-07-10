@@ -1,0 +1,14 @@
+
+<nav ng-controller="NavCtrl" class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button data-toggle="collapse" data-target="#navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a ui-sref="home" class="navbar-brand">#Cloud {{currentUser.displayName}}</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a ui-sref="home"><i class="glyphicon glyphicon-home">&nbsp;Home</i></a></li>
+        <li><a ng-click="login()" ng-hide="currentUser"><i class="glyphicon glyphicon-home">&nbsp;Login</i></a><a ng-click="logout()" ng-show="currentUser"><i class="glyphicon glyphicon-home">&nbsp;Logout</i></a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

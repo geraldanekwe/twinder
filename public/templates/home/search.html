@@ -1,0 +1,31 @@
+<div ng-show="data.stats" class="well well-sm">
+  <div id="tags" class="clearfix">
+    <div ng-repeat="(tag, size) in data.stats" style="font-size: {{size}}px" class="tag"><span ng-click="includeInTweet(tag)">{{tag}}</span></div>
+  </div>
+</div>
+<div id="tweeters">
+  <div ng-show="data.users" class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="showFriends">Show Friends
+    </label>
+  </div>
+  <div ng-repeat="(screenName, userData) in data.users | friendsFilter : showFriends" class="media">
+    <div class="media-left">
+      <a target="_blank" href="http://twitter.com/{{userData.screen_name}}"><img ng-src="{{userData.profile_image_url}}" class="media-object"></a>
+    </div>
+    <div class="media-body">
+      <button ng-hide="userData.following" ng-click="follow(screenName)" ng-style="btnStyle(userData.ratio)" class="btn btn-info btn-xs pull-right">Follow</button>
+      <button disabled ng-show="userData.following" class="btn btn-default btn-xs pull-right disabled">Following</button>
+      <h4 class="media-heading">{{userData.name}}</h4>
+      <div class="counts"><span class="username"><strong>@{{userData.screen_name}}</strong></span><span class="friends">{{userData.friends_count}} Following</span><span class="followers">{{userData.followers_count}} Followers</span><span class="tweets">{{userData.statuses_count}} Tweets</span></div>
+      <div class="description">{{userData.description}}</div>
+    </div>
+  </div>
+</div>
+<hr>
+<form class="form-inline" ng-show="data.isLoggedIn">
+  <div class="form-group">
+    <textarea placeholder="Tweet here" ng-model="tweet" class="form-control"></textarea>
+  </div>
+  <button ng-click="sendTweet()" class="pull-right btn btn-default">Tweet</button>
+</form>
